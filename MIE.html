@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MIE</title>
+  <h1>Minecraft Item Editor</h1>
+</head>
+ 
+<body>
+    <input type='text', id = 'echpochmak'value='/give DOESNT diamond_sword 1 0 {display:{Name:"Made by DOESNT"}}' id='result'> Скопируй это с помощью Ctrl + A, Ctrl + C</input>
+    <br>
+    <br>
+    <input type='text', value='diamond_sword', id = 'predmet'>ID предмета
+    <br>
+    <input type='text', value='1', id = 'chislo'>Кол-во предмета
+    <br>
+    <input type='text', value='0', id = 'yron'>Поношенность/Вид предмета  <input type='button' id='unbreakablebtn'> Неразрушимый предмет
+    <br>
+    <input type='text', value='Made by DOESNT', id = 'imya'>Имя предмета
+    <br>
+    <br>
+    <input type='button', id= 'lorecreate', value="Добавить">
+    <input type='text', id = 'lore1txt'>Добавить историю
+    <br>
+    <br>
+    <input type='button', value="Создать", id = 'create'>
+    <br>
+    История предмета - 
+    <br>
+    <input type='text', id = 'sp1'>
+    <input type='text', id = 'sp2'>
+    <input type='text', id = 'sp3'>
+    <input type='text', id = 'sp4'>
+    <input type='text', id = 'sp5'>
+    <br>
+    Made by DOESNT
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script> 
+ 
+   <script>
+     let item = 'diamond_sword';
+     let lore = '"Made by DOESNT"';
+     let lore1text;
+     let number = '1';
+     numlore = 0;
+     let damage = '0';
+     let addlore;
+     let lore1;
+     let lore2;
+     let lore3;
+     let lore4;
+     let lore5;
+     let unbreakable = 0;
+     let name = 'Made by DOESNT';
+     let tag = '{display:{Name:"' + name + '", Lore:["Made by DOESNT",' + lore + ']}}';
+     let command = '/give' + ' @p ' + item + ' ' + number + ' ' + damage + ' {' + tag + '}';
+
+     lorecreate.onclick = function()
+     {  
+         numlore = numlore +1;
+         switch (numlore)
+         {
+            case 1: 
+                lore1 = document.getElementById('lore1txt').value;
+                lore = '"Made by DOESNT"' + ',"' + lore1 + '"';
+                document.getElementById('sp1').value = lore1;
+                break;
+            case 2:
+                lore2 = document.getElementById('lore1txt').value;
+                lore = lore + ',"' + lore2 + '"';
+                document.getElementById('sp2').value = lore2;
+                break;
+            case 3:
+                lore3 = document.getElementById('lore1txt').value;
+                lore = lore + ',"' + lore3 + '"';
+                document.getElementById('sp3').value = lore3;
+                break;
+            case 4:
+                lore4 = document.getElementById('lore1txt').value;
+                lore = lore + ',"' + lore4 + '"';
+                document.getElementById('sp4').value = lore4;
+                break;
+            case 5:
+                lore5 = document.getElementById('lore1txt').value;
+                lore = lore + ',"' + lore5 + '"';
+                document.getElementById('sp5').value = lore5;
+                break;
+         }
+     }
+     unbreakablebtn.onclick = function()
+     {
+        unbreakable = 1;
+     }
+     create.onclick = function()
+     {
+        unbreakable = document.getElementById('Unbreakable');
+        item = document.getElementById('predmet').value;
+        number = document.getElementById('chislo').value;
+        damage = document.getElementById('yron').value;
+        name = document.getElementById('imya').value;
+        loretext = document.getElementById('lore1txt').value;
+        tag = 'display:{Name:"' + name + '", Lore:[' + lore + ']}';
+        if(unbreakable = 1)
+            {   
+                tag = tag + ',Unbreakable:1b'
+            }
+        command = '/give' + ' @p ' + item + ' ' + number + ' ' + damage + ' {' + tag + '}';
+        document.getElementById('echpochmak').value = command;
+     }
+
+   </script>
+</body>
+</html>
